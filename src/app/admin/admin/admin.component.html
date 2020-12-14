@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" >Pick My Solar</a>
+  <div class="navbar-nav ml-auto">
+
+      <!-- <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Home</a>
+      <a  routerLinkActive="active" class="nav-item nav-link">Profile</a>
+      <a routerLinkActive="active" class="nav-item nav-link">Admin</a> -->
+      <a  class="nav-item nav-link" (click)="logOut()">Logout</a>
+  </div>
+</nav>
+<br>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-6">
+    <h3>Hello {{currentUser.firstName | titlecase}}&nbsp;&nbsp;{{currentUser.lastName | titlecase}}! ,&nbsp;{{currentUser.role | titlecase}}</h3>
+  </div>
+  <div class="col-md-6 text-right">
+    <button  mat-raised-button color="primary" (click)="createUser()" mat-button >Create User</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <table mat-table [dataSource]="usersList" class="mat-elevation-z8 w-100">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+        <!-- UserName Column -->
+        <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef> User Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+          </ng-container>
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell  *matHeaderCellDef > Actions </th>
+        <td mat-cell *matCellDef="let row" >
+          <button   class="mr-2" mat-raised-button color="accent" mat-button (click)="viewUser(row)" >Profile</button>
+             <button class="mr-2" mat-raised-button color="primary" (click)="EditUser(row)" mat-button >Edit</button>
+             <button  mat-raised-button color="warn" mat-button (click)="deleteUser(row)" >Delete</button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+</div>

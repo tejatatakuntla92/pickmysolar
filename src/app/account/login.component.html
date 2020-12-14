@@ -1,0 +1,32 @@
+<div class="loginPage">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-4">
+      <h3 class="title">Pick My Solar</h3>
+      <div *ngIf="isIncorrect" class="alert alert-danger" role="alert">
+        Incorrect Username / Password
+      </div>
+      <div *ngIf="isNoUsers" class="alert alert-danger" role="alert">
+        Register first
+      </div>
+<form class="example-form mt-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <mat-form-field class="example-full-width w-100"  appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="userName" type="text" placeholder="Username">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width w-100"  appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Password">
+    </mat-form-field>
+    <br>
+    <button [disabled]="!loginForm.valid" mat-raised-button color="primary" mat-button>Sign In</button>
+   
+    <mat-label class="ml-3 text-primary" routerLink="/register">Register</mat-label>
+  </form>
+</div>
+<div class="col-md-2"></div>
+  </div>
+</div>
+</div>

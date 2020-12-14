@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" >Pick My Solar</a>
+    <div class="navbar-nav ml-auto">
+        <!-- <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Home</a>
+        <a  routerLinkActive="active" class="nav-item nav-link">Profile</a>
+        <a routerLinkActive="active" class="nav-item nav-link">Admin</a> -->
+        <a  class="nav-item nav-link" (click)="logOut()">Logout</a>
+    </div>
+  </nav>
+  <div class="container-fluid">
+<form class="example-form" [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="row">
+    <div class="col-md-12 mt-3">
+      <h3>You can edit the user</h3>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" type="text" placeholder="First Name">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" type="text" placeholder="Last Name">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{role.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6" *ngIf="isCreate">
+      <mat-form-field  class="example-full-width w-100" appearance="outline">
+        <mat-label>UserName</mat-label>
+        <input matInput  formControlName="userName" type="text" placeholder="Username">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Password">
+      </mat-form-field>
+    </div>
+  </div>
+    <button class="mr-2" [disabled]="!editForm.valid" mat-raised-button color="primary" mat-button>Save</button>
+    <button   routerLink="/admin" mat-raised-button color="warn" mat-button>Cancel</button>
+  </form>
+</div>
